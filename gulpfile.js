@@ -53,6 +53,7 @@ gulp.task("copy-assets", () => {
 gulp.task("watch", () => {
     browsersync.init({
 		server: "./dist/",
+		browser: "chrome",
 		port: 4000,
 		notify: true
     });
