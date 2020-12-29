@@ -622,7 +622,7 @@ textarea:focus {
 
 .guarantees h3 {
   margin-top: 3rem;
-  margin-bottom: 8rem;
+  /* margin-bottom: 4rem; */
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 1.4;
@@ -636,6 +636,12 @@ textarea:focus {
 .guarantees_block:hover {
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.guarantees_block {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 /*Payment*/
