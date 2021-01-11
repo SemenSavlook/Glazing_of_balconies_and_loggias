@@ -27,7 +27,7 @@
 	"dependencies": {
 		"axios": "^0.21.1",
 		"jquery": "^3.5.1",
-		"localtunnel": "^2.0.0",
+		"localtunnel": "^2.0.1",
 		"slick-carousel": "^1.8.1"
 	}
 }

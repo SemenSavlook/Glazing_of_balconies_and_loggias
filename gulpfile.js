@@ -4,7 +4,11 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-const dist = "./dist/";
+//for PC & MAC -- Dev
+// const dist = "./dist/";
+
+// for MAC with MAMP
+const dist = "/Applications/MAMP/htdocs/Balcon"; 
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
@@ -12,10 +16,17 @@ gulp.task("copy-html", () => {
                 .pipe(browsersync.stream());
 });
 
+gulp.task("copy-css", () => {
+    return gulp.src("./src/css/**/*.css")
+                .pipe(gulp.dest(dist))
+                .pipe(browsersync.stream());
+});
+
 gulp.task("build-js", () => {
     return gulp.src("./src/js/main.js")
                 .pipe(webpack({
-                    mode: 'production',
+                    // mode: 'production',
+                    mode: 'development',
                     output: {
                         filename: 'script.js'
                     },
@@ -59,11 +70,12 @@ gulp.task("watch", () => {
     });
     
     gulp.watch("./src/index.html", gulp.parallel("copy-html"));
+    gulp.watch("./src/css/**/*.css", gulp.parallel("copy-css"));
     gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
     gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js", "copy-css"));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")
