@@ -51,6 +51,42 @@ const changeModalState = (state) => {
 	bindActionToElems('change', windowType, 'type-of-window');
 	bindActionToElems('change', windowProfile , 'window-profile');
 
+	// Enable/Disable Status ----------------
+	const calcButtonNext = document.querySelector('.button.popup_calc_button'), 
+				calcProfileButtonNext = document.querySelector('.button.popup_calc_profile_button'),
+				inputParent = document.querySelector('.popup_calc_content'),
+				calcTypeParent = document.querySelector('.popup_calc_profile_content select');
+	
+	function disableAttributeHandler(elem) {
+		elem.setAttribute('disabled', 'disabled');
+	}
+	
+	disableAttributeHandler(calcButtonNext);
+
+	function enableAttributeHandler(elem) {
+		elem.removeAttribute('disabled');
+	}	
+	
+	inputParent.addEventListener('input', () => {
+		if (windowWidth[0].value > 10 && +windowHeight[0].value > 10) {
+			enableAttributeHandler(calcButtonNext);
+		} else {
+			disableAttributeHandler(calcButtonNext);
+		}
+	});
+
+	if (windowType[0][0].value == 'default-disabled') {
+		disableAttributeHandler(calcProfileButtonNext);
+	}
+
+	calcTypeParent.addEventListener('change', () => {
+		console.log('ffffff');
+		if (windowType[0][0].value != 'default-disabled') {
+			enableAttributeHandler(calcProfileButtonNext);			
+		}
+	});
+
+	console.dir(calcTypeParent);
 
 };
 
