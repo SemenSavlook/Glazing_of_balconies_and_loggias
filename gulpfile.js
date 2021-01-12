@@ -4,11 +4,11 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-//for PC & MAC -- Dev
-const dist = "./dist/";
+//for PC & MAC  ----- Dev --------
+// const dist = "./dist/";
 
-// for MAC with MAMP
-// const dist = "/Applications/MAMP/htdocs/Balcon"; 
+// for MAC with MAMP  ----- Dev --------
+const dist = "/Applications/MAMP/htdocs/Balcon"; 
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
@@ -75,7 +75,7 @@ gulp.task("watch", () => {
     gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js", "copy-css"));
+gulp.task("build", gulp.parallel("copy-html", "copy-css", "copy-assets", "build-js"));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")

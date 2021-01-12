@@ -1840,10 +1840,34 @@ opacity: .5;
   }
 }
 
-.form-control[name="view"] {
-	font-weight: 600;
+.form-control[name="view"]{
+  font-weight: 600;
+  color: black;
 }
-.form-control[name="view"] option:disabled {
-	opacity: .1;
-	color: #eee;
+
+.summarry-table {
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 15px;
+
+}
+.summarry-table tr:first-child > td:first-child { 
+  border-radius: 8px 0 0 0;
+}
+/* HERE--------- */
+.summarry-table tr{
+  background-color: rgba(255, 221, 0, .5);
+}
+
+.summarry-table tr:nth-child(even){
+  background-color: rgba(255, 221, 0, .2);
+}
+
+.summarry-table td {
+  padding: 5px 5px;
+}
+
+.summarry-table td:first-child{
+  font-weight: 600;  
 }

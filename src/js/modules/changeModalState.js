@@ -40,6 +40,7 @@ const changeModalState = (state) => {
 				}
 
 				console.log(state);
+				// console.log(Object.keys(state).length);
 			});
 		});
 
@@ -55,7 +56,7 @@ const changeModalState = (state) => {
 	const calcButtonNext = document.querySelector('.button.popup_calc_button'), 
 				calcProfileButtonNext = document.querySelector('.button.popup_calc_profile_button'),
 				inputParent = document.querySelector('.popup_calc_content'),
-				calcTypeParent = document.querySelector('.popup_calc_profile_content select');
+				calcTypeParent = document.querySelector('.popup_calc_profile_content');
 	
 	function disableAttributeHandler(elem) {
 		elem.setAttribute('disabled', 'disabled');
@@ -68,7 +69,7 @@ const changeModalState = (state) => {
 	}	
 	
 	inputParent.addEventListener('input', () => {
-		if (windowWidth[0].value > 10 && +windowHeight[0].value > 10) {
+		if (windowWidth[0].value > 100 && +windowHeight[0].value > 100) {
 			enableAttributeHandler(calcButtonNext);
 		} else {
 			disableAttributeHandler(calcButtonNext);
@@ -79,14 +80,19 @@ const changeModalState = (state) => {
 		disableAttributeHandler(calcProfileButtonNext);
 	}
 
-	calcTypeParent.addEventListener('change', () => {
-		console.log('ffffff');
-		if (windowType[0][0].value != 'default-disabled') {
-			enableAttributeHandler(calcProfileButtonNext);			
+	calcTypeParent.addEventListener('change', (e) => {
+
+		let trigger = false;
+		windowProfile.forEach(item => {
+			if (item.checked == true) { 
+				trigger = true;
+			}
+		});
+
+		if ((windowType[0].selectedIndex > 0) && trigger) {
+			enableAttributeHandler(calcProfileButtonNext);
 		}
 	});
-
-	console.dir(calcTypeParent);
 
 };
 
