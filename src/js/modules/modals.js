@@ -24,6 +24,7 @@ const modals = () => {
 		close.addEventListener('click', () => {
 			windows.forEach(item => {
 				item.style.display = 'none';
+
 			});
 
 			modal.style.display = 'none';
@@ -35,6 +36,7 @@ const modals = () => {
 			if	(e.code == 'Escape') {
 					modal.style.display = 'none';
 					document.body.style.overflow = '';
+
 			}
 		});
 

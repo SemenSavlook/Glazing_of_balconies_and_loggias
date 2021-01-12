@@ -40,7 +40,7 @@ const changeModalState = (state) => {
 				}
 
 				console.log(state);
-				// console.log(Object.keys(state).length);
+
 			});
 		});
 
