@@ -55,7 +55,12 @@ const forms = (state) => {
 					clearInputs();
 					setTimeout(() => {
 						statusMessage.remove();
-					}, 5000);
+						document.querySelector('.popup_calc_end').style.display = 'none';
+						document.body.style.overflow = '';
+						let tableToRemove = document.querySelector('.summarry-table');
+						tableToRemove.parentNode.removeChild(tableToRemove);
+						return state = null;
+					}, 4000);
 				});
 		});
 	});

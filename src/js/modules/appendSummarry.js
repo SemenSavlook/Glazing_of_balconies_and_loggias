@@ -1,9 +1,9 @@
 	function appendSummarry(triggerSelector, childSiblingSelector, state) {
 
 		const trigger = document.querySelectorAll(triggerSelector),
-					childSibling = document.querySelector(childSiblingSelector);
-
-
+					childSibling = document.querySelector(childSiblingSelector),
+					close4RemoveSelector = document.querySelector('.popup_calc_end_close');
+		
 		trigger.forEach(item => {
 			item.addEventListener('click', () => {
 
@@ -13,6 +13,7 @@
 
 				let summarryDiv = document.createElement('table');
 				summarryDiv.classList.add('summarry-table');
+
 				let wShape;
 				switch (state["window-shape"]) {
 
@@ -72,6 +73,16 @@
 				`
 				);
 				childSibling.before(summarryDiv);
+
+				close4RemoveSelector.addEventListener('click', () => {
+					childSibling.parentNode.removeChild(summarryDiv);
+				});
+
+				document.addEventListener('keydown', (e) => {
+					if	(e.code == 'Escape') {
+						childSibling.parentNode.removeChild(summarryDiv);
+					}
+				});
 
 			});
 		});

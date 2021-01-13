@@ -19,20 +19,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	forms(modalState);
 
 	appendSummarry('.popup_calc_profile_button', '[data-cost]', modalState);
+ 
 
-	function closeReset(remDivSelector, ...closeTriggers) {
-
-		closeTriggers.forEach(item => {
-			item.addEventListener('click', () => {
-				debugger;
-				let remDiv = document.querySelector('remDivSelector');
-				remDiv.remove();
-			});
-		});
-
-	
-	}
-
-	closeReset('[data-cost]', '.popup_calc_end_close');
+	// closeReset('[data-cost]', '.popup_calc_end_close');
 });
 
