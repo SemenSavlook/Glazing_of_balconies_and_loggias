@@ -58,8 +58,11 @@ const forms = (state) => {
 						document.querySelector('.popup_calc_end').style.display = 'none';
 						document.body.style.overflow = '';
 						let tableToRemove = document.querySelector('.summarry-table');
-						tableToRemove.parentNode.removeChild(tableToRemove);
-						return state = null;
+						if (tableToRemove) {
+							tableToRemove.parentNode.removeChild(tableToRemove);
+							tableToRemove = null;
+						}
+						return (state = null);
 					}, 4000);
 				});
 		});

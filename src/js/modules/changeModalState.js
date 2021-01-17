@@ -22,7 +22,7 @@ const changeModalState = (state) => {
 
 					case 'INPUT': 
 								if (item.getAttribute('type') === 'checkbox') {
-									(i === 0) ? state[prop] = "Холодное" : state[prop] = "Тёплое";
+									(i === 0) ? (state[prop] = "Холодное") : (state[prop] = "Тёплое");
 									elem.forEach((box, j) => {
 										box.checked = false;
 										if (i == j) {
@@ -39,7 +39,7 @@ const changeModalState = (state) => {
 					break;
 				}
 
-				console.log(state);
+				// console.log(state);
 
 			});
 		});

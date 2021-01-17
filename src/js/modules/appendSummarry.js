@@ -1,59 +1,60 @@
-	function appendSummarry(triggerSelector, childSiblingSelector, state) {
+import tabs from "./tabs";
 
-		const trigger = document.querySelectorAll(triggerSelector),
-					childSibling = document.querySelector(childSiblingSelector),
-					close4RemoveSelector = document.querySelector('.popup_calc_end_close');
-		
-		trigger.forEach(item => {
-			item.addEventListener('click', () => {
+function appendSummarry(triggerSelector, childSiblingSelector, state) {
 
-				if (!state["window-shape"]) {
-					state["window-shape"] = 0;
-				}
+	const trigger = document.querySelector(triggerSelector),
+				childSibling = document.querySelector(childSiblingSelector);
 
-				let summarryDiv = document.createElement('table');
-				summarryDiv.classList.add('summarry-table');
+	let summarryDiv;
 
-				let wShape;
-				switch (state["window-shape"]) {
+	let createSummaryTable = function (state) {
+		if (!state["window-shape"]) {
+			state["window-shape"] = 0;
+		}
 
-					case 0: wShape = "Прямое окно";
-						break;
+		let wShape;
+		switch (state["window-shape"]) {
 
-					case 1: wShape = "Z-образное";
-						break;
+			case 0: wShape = "Прямое окно";
+				break;
 
-					case 2: wShape = "Г-образное";
-						break;
+			case 1: wShape = "Z-образное";
+				break;
 
-					case 3: wShape = "П-образное";
-						break;
+			case 2: wShape = "Г-образное";
+				break;
 
-					default: wShape = "Форма окна не выбрана";
-				}
+			case 3: wShape = "П-образное";
+				break;
 
-				let wMaterial;
-				switch (state["type-of-window"]) {
+			default: wShape = "Форма окна не выбрана";
+		}
 
-					case "tree": wMaterial = "Деревянное";
-						break;
+		let wMaterial;
+		switch (state["type-of-window"]) {
 
-					case "aluminum": wMaterial = "Алюминиевое";
-						break;
+			case "tree": wMaterial = "Деревянное";
+				break;
 
-					case "plastic": wMaterial = "Пластиковое";
-						break;
+			case "aluminum": wMaterial = "Алюминиевое";
+				break;
 
-					case "french": wMaterial = "Панорамное";
-						break;
+			case "plastic": wMaterial = "Пластиковое";
+				break;
 
-					case "overhang": wMaterial = "Остекление с выносом";
-						break;
+			case "french": wMaterial = "Панорамное";
+				break;
 
-					default: wMaterial = "Материал не выбран";
-				}
+			case "overhang": wMaterial = "Остекление с выносом";
+				break;
 
-				summarryDiv.insertAdjacentHTML('afterbegin', `
+			default: wMaterial = "Материал не выбран";
+		}
+
+		summarryDiv = document.createElement('table');
+		summarryDiv.classList.add('summarry-table');
+
+		summarryDiv.insertAdjacentHTML('afterbegin', `
 				<tr>
 				<td>Форма окна:</td><td>${wShape}
 				</td>
@@ -71,21 +72,34 @@
 				<td>Профиль:</td><td>${state["window-profile"].replace('ое', 'ый')}</td>
 				</tr>
 				`
-				);
-				childSibling.before(summarryDiv);
+		);
 
-				close4RemoveSelector.addEventListener('click', () => {
-					childSibling.parentNode.removeChild(summarryDiv);
-				});
+		childSibling.before(summarryDiv);
+	};
 
-				document.addEventListener('keydown', (e) => {
-					if	(e.code == 'Escape') {
-						childSibling.parentNode.removeChild(summarryDiv);
-					}
-				});
-
-			});
-		});
+	function tablePreRender(table) {
+		if (table) {
+			table.parentNode.removeChild(table);
+		}
+		summarryDiv = null;
 	}
+
+	trigger.addEventListener('click', function () {
+		if (summarryDiv) {
+			tablePreRender(summarryDiv);
+		}
+		createSummaryTable(state);
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (e.code == 'Escape') {
+			if (summarryDiv) {				
+				tablePreRender(summarryDiv);
+			}
+		}
+	});
+
+
+}
 
 export default appendSummarry;

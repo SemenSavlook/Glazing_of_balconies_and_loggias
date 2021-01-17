@@ -32,14 +32,6 @@ const modals = () => {
 
 		});
 
-		document.addEventListener('keydown', (e) => {
-			if	(e.code == 'Escape') {
-					modal.style.display = 'none';
-					document.body.style.overflow = '';
-
-			}
-		});
-
 		modal.addEventListener('click', (e) => {
 			if (e.target === modal && closeClickOverlay) {
 
@@ -60,12 +52,24 @@ const modals = () => {
 		}, time);
 	}
 
+	function escHandler (...params) {
+		document.addEventListener('keydown', (e) => {
+			if (e.code == 'Escape') {
+				params.forEach( e => {
+					document.querySelector(e).style.display = 'none';
+					document.body.style.overflow = '';
+				});
+			}
+		});
+	}
+
 	blindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
 	blindModal('.phone_link', '.popup', '.popup .popup_close');
 	blindModal('.popup_calc_btn', '.popup_calc', '.popup_calc_close');
 	blindModal('.popup_calc_button', '.popup_calc_profile', '.popup_calc_profile_close', false);
 	blindModal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', false);
 
+	escHandler('.popup_engineer', '.popup', '.popup_calc', '.popup_calc_profile', '.popup_calc_end');
 	// showModalByTime('.popup', 60000); 
 
 };
