@@ -18,6 +18,8 @@ const modals = () => {
 
 				modal.style.display = 'block';
 				document.body.style.overflow = 'hidden';
+
+				
 			});
 		});
 
@@ -70,6 +72,7 @@ const modals = () => {
 	blindModal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', false);
 
 	escHandler('.popup_engineer', '.popup', '.popup_calc', '.popup_calc_profile', '.popup_calc_end');
+
 	// showModalByTime('.popup', 60000); 
 
 };

@@ -1,6 +1,6 @@
 import tabs from "./tabs";
 
-function appendSummarry(triggerSelector, childSiblingSelector, state) {
+function appendSummarry(triggerSelector, childSiblingSelector, state, priceAdder) {
 
 	const trigger = document.querySelector(triggerSelector),
 				childSibling = document.querySelector(childSiblingSelector);
@@ -98,6 +98,14 @@ function appendSummarry(triggerSelector, childSiblingSelector, state) {
 			}
 		}
 	});
+
+
+	let test = document.querySelectorAll('[data-price]');
+	test.forEach(i => {
+		console.log('Here...');
+		console.log(i.getAttribute('data-price'));
+	});
+	// console.dir(test);
 
 
 }
