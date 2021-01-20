@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	tabs('.balcon_icons', '.balcon_icons_img', '.big_img > img', 'do_image_more', 'inline-block');
 	forms(modalState);
 
-	appendSummarry('.popup_calc_profile_button', '[data-cost]', modalState);
+	appendSummarry('.popup_calc_profile_button', '[data-cost]', modalState, '[data-price]');
  
 
 	// closeReset('[data-cost]', '.popup_calc_end_close');

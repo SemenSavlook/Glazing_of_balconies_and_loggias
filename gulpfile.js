@@ -5,10 +5,10 @@ const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
 //for PC & MAC  ----- Dev --------
-const dist = "./dist/";
+// const dist = "./dist/";
 
 // for MAC with MAMP  ----- Dev --------
-// const dist = "/Applications/MAMP/htdocs/Balcon"; 
+const dist = "/Applications/MAMP/htdocs/Balcon"; 
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")

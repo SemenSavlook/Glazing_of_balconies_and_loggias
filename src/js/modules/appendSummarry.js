@@ -1,9 +1,29 @@
+import { dequeue } from "jquery";
 import tabs from "./tabs";
 
-function appendSummarry(triggerSelector, childSiblingSelector, state, priceAdder) {
+function appendSummarry(triggerSelector, childSiblingSelector, state, pricePerSquareSelector) {
 
 	const trigger = document.querySelector(triggerSelector),
-				childSibling = document.querySelector(childSiblingSelector);
+		childSibling = document.querySelector(childSiblingSelector),
+		pricePerSquareArray = document.querySelectorAll(pricePerSquareSelector);
+
+	let pricePerSquareList = {
+		'tree_cold': 2600,
+		'tree_hot': 4000,
+		'alum_cold': 4000,
+		'alum_hot': 8000,
+		'plastic_hot': 5500,
+		'french_cold': 5500,
+		'french_hot': 8000,
+		'rise_cold': 4000,
+		'rise_hot': 8000
+	};
+
+	pricePerSquareArray.forEach(item => {
+		item.addEventListener('click', () => {
+			state.price = pricePerSquareList[item.getAttribute(pricePerSquareSelector.match(/data-\w+/))];
+		});
+	});
 
 	let summarryDiv;
 
@@ -71,6 +91,9 @@ function appendSummarry(triggerSelector, childSiblingSelector, state, priceAdder
 				<tr>
 				<td>Профиль:</td><td>${state["window-profile"].replace('ое', 'ый')}</td>
 				</tr>
+				<tr>
+				<td>Цена:</td><td>${state["price"]} руб./м<sup>2</sup></td>
+				</tr>
 				`
 		);
 
@@ -98,15 +121,6 @@ function appendSummarry(triggerSelector, childSiblingSelector, state, priceAdder
 			}
 		}
 	});
-
-
-	let test = document.querySelectorAll('[data-price]');
-	test.forEach(i => {
-		console.log('Here...');
-		console.log(i.getAttribute('data-price'));
-	});
-	// console.dir(test);
-
 
 }
 
