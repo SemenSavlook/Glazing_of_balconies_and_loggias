@@ -5,6 +5,7 @@ import forms from './modules/forms';
 import changeModalState from './modules/changeModalState';
 import appendSummarry from './modules/appendSummarry';
 import timer from './modules/timer';
+import images from './modules/images';
 
 window.addEventListener('DOMContentLoaded', () => {
 	"use strict";
@@ -22,6 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	appendSummarry('.popup_calc_profile_button', '[data-cost]', modalState, '[data-price]');
 
 	timer('.container1', deadline);
+
+	images();
  
 });
 

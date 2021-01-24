@@ -8,14 +8,6 @@ const timer = (id, deadline) => {
 		}
 	};
 
-	// let date = new Date();
-	// console.log(date);
-	// console.log(date.getTimezoneOffset());
-	// console.log(Date.now());
-	// console.log(Date.parse(date));
-	// // let deadlinetime = Date.parse('2021-01-24');
-	// let testdate = Date.parse(date);
-
 	const getTimeRemaining = (endtime) => {
 		const t = Date.parse(endtime) - Date.parse(new Date()) + (new Date().getTimezoneOffset() * 1000 * 60),
 					seconds = Math.floor((t / 1000) % 60),
