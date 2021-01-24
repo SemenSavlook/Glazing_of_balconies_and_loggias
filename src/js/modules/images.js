@@ -25,11 +25,13 @@ const images = () => {
 			bigImage.style.margin = 0;
 			bigImage.style.maxHeight = '520px';
 			document.body.style.overflow = 'hidden';
+			document.body.style.marginRight = `17px`;
 		}
 
 		if (target && target.matches('div.popup')) {
 			imgPopup.style.display = 'none';
 			document.body.style.overflow = '';
+			document.body.style.marginRight = `0px`;
 		}
 
 	});
@@ -38,9 +40,10 @@ const images = () => {
 		if (e.code == 'Escape') {
 			imgPopup.style.display = 'none';
 			document.body.style.overflow = '';
+			document.body.style.marginRight = `0px`;
 		}
 	});
-	
+
 };
 
 export default images;
