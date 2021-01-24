@@ -5,3 +5,4 @@ dist/assets
 dist/
 dist/index.hml
 dist/**.*
+debug.log

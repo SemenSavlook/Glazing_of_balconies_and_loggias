@@ -4,12 +4,13 @@ import tabs from './modules/tabs';
 import forms from './modules/forms';
 import changeModalState from './modules/changeModalState';
 import appendSummarry from './modules/appendSummarry';
-
+import timer from './modules/timer';
 
 window.addEventListener('DOMContentLoaded', () => {
 	"use strict";
 
 	let modalState = {};
+	let deadline = '2022-01-01';
 
 	changeModalState(modalState);
 	modals();
@@ -19,8 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	forms(modalState);
 
 	appendSummarry('.popup_calc_profile_button', '[data-cost]', modalState, '[data-price]');
- 
 
-	// closeReset('[data-cost]', '.popup_calc_end_close');
+	timer('.container1', deadline);
+ 
 });
 

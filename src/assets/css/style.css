@@ -730,7 +730,8 @@ opacity: .5;
 .description1{
   font-size: 18px;
   text-align: center;
-  color: black;
+	color: black;
+	margin-top: 3px;
 }
 
 
